@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h3>Users:</h3>
+    <button class="btn btn-primary" @click="enterFromChild">Enter</button>
     <table class="table">
       <thead>
         <th scope="col">Id</th>
@@ -9,7 +10,7 @@
         <th scope="col">City</th>
       </thead>
       <tbody v-if="users">
-        <tr v-for="user in usersInBosnia" v-bind:key="user.id">
+        <tr v-for="user in principalUsers" :key="user.id">
           <td scope="row">{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
@@ -21,28 +22,21 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   name: 'Users',
-  data: function (){
-    return {
-      users: null,
-    }
-  },
-  created: function () {
-    axios
-      .get('https://jsonplaceholder.typicode.com/users')
-      .then(res => {
-        this.users = res.data;
-      })
+  props: {
+    users: Object
   },
   computed:{
-    usersInBosnia () {
+    principalUsers () {
       return this.users.filter(user => user.id < 5)
     }
+  },
+  methods: {
+    enterFromChild () {
+      this.$emit('childToParent', 'hello from child')
+    }
   }
-
 }
 </script>
 
