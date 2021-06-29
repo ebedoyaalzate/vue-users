@@ -3,10 +3,10 @@
     <h3>Users:</h3>
     <table class="table">
       <thead>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">City</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>City</th>
       </thead>
       <tbody v-if="users">
         <tr v-for="user in principalUsers" :key="user.id">
