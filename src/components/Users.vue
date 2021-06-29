@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h3>Users:</h3>
-    <button class="btn btn-primary" @click="enterFromChild">Enter</button>
     <table class="table">
       <thead>
         <th scope="col">Id</th>
@@ -11,13 +10,14 @@
       </thead>
       <tbody v-if="users">
         <tr v-for="user in principalUsers" :key="user.id">
-          <td scope="row">{{ user.id }}</td>
+          <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.address.city }}</td>
         </tr>
       </tbody>
     </table>
+    <button class="btn btn-primary" @click="enterFromChild">Enter</button>
   </div>
 </template>
 
